@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#160d24" />
+  <meta name="description" content="An interactive English lesson about Halloween experiences and the Present Perfect." />
+  <title>Halloween Experience Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,700;9..144,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="progress-shell" aria-label="Lesson progress">
+    <div class="progress-copy"><span id="progressLabel">Welcome</span><span id="progressCount">0 / 5</span></div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  </div>
+
+  <header class="hero" id="top">
+    <nav class="nav wrap" aria-label="Main navigation">
+      <a class="brand" href="#top"><span class="brand-mark">✦</span> Experience Lab</a>
+      <div class="nav-links">
+        <a href="#language">Language</a><a href="#lab">Grammar lab</a><a href="#mission">Final mission</a>
+      </div>
+      <button class="sound-toggle" id="soundToggle" aria-pressed="true" title="Turn interface sounds off">Sound on</button>
+    </nav>
+    <div class="hero-content wrap">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Interactive English lesson · Present Perfect</p>
+        <h1>What have you<br><em>done</em> this Halloween?</h1>
+        <p class="hero-lede">Explore twelve Halloween experiences, master <strong>have / has + past participle</strong>, and design the perfect spooky night.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#language">Enter the lesson <span>→</span></a>
+        </div>
+      </div>
+      <div class="hero-art reveal" aria-hidden="true">
+        <div class="moon"></div>
+        <img src="assets/party.png" alt="" />
+        <span class="float-badge badge-one">Have you ever…?</span>
+        <span class="float-badge badge-two">I have! ✓</span>
+      </div>
+    </div>
+    <div class="scroll-cue">Scroll to explore <span>↓</span></div>
+  </header>
+
+  <main>
+    <section class="section language-section" id="language" data-step="1">
+      <div class="wrap">
+        <div class="section-heading reveal">
+          <p class="step-kicker">01 · Meet the language</p>
+          <h2>Picture it. Say it.</h2>
+          <p>Tap each picture to reveal the phrase. Then use the speaker to hear it aloud.</p>
+        </div>
+        <div class="phrase-stage reveal">
+          <button class="round-button prev" id="prevPhrase" aria-label="Previous phrase">←</button>
+          <article class="phrase-card" id="phraseCard">
+            <div class="phrase-image-wrap"><img id="phraseImage" src="assets/carve.png" alt="A woman carving a pumpkin" /></div>
+            <div class="phrase-content">
+              <div><span class="card-count" id="phraseCount">01 / 12</span><span class="verb-chip" id="verbChip">carve</span></div>
+              <button class="reveal-phrase" id="revealPhrase">Tap to reveal the phrase</button>
+              <div class="phrase-answer" id="phraseAnswer" aria-live="polite">
+                <h3 id="phraseText">carve a pumpkin</h3>
+                <button class="speak-button" id="speakPhrase" aria-label="Hear this phrase">◖))</button>
+              </div>
+            </div>
+          </article>
+          <button class="round-button next" id="nextPhrase" aria-label="Next phrase">→</button>
+        </div>
+        <div class="dots" id="phraseDots" aria-label="Choose a phrase"></div>
+      </div>
+    </section>
+
+    <section class="section grammar-section" id="lab" data-step="2">
+      <div class="wrap">
+        <div class="section-heading light reveal">
+          <p class="step-kicker">02 · Remember</p>
+          <h2>Build the verb spell</h2>
+          <p>Complete the missing past participles. Irregular verbs glow purple.</p>
+        </div>
+        <div class="verb-lab reveal" id="verbLab"></div>
+        <div class="center-actions reveal">
+          <button class="button pale" id="checkVerbs">Check my verbs</button>
+          <button class="text-button" id="resetVerbs">Reset</button>
+          <p class="feedback" id="verbFeedback" aria-live="polite"></p>
+        </div>
+
+        <div class="formula-lab reveal">
+          <div class="formula-intro">
+            <p class="mini-label">The magic formula</p>
+            <h3>Rebuild the three forms</h3>
+            <p>Choose the helper that makes each sentence work.</p>
+          </div>
+          <div class="formula-grid" id="formulaGrid"></div>
+          <button class="button dark small" id="checkFormula">Check the formula</button>
+          <p class="feedback dark-feedback" id="formulaFeedback" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section meaning-section" data-step="3">
+      <div class="wrap split">
+        <div class="meaning-art reveal"><div class="ghost-orbit"></div><img src="assets/ghost.png" alt="A surprised witch seeing a friendly ghost" /></div>
+        <div class="meaning-copy reveal">
+          <p class="step-kicker">03 · Understand</p>
+          <h2>What does the speaker mean?</h2>
+          <p class="meaning-note">Match each sentence to its job. Click one label under every sentence.</p>
+          <div class="match-list" id="matchList"></div>
+          <button class="button primary small" id="checkMeaning">Check my matches</button>
+          <p class="feedback" id="meaningFeedback" aria-live="polite"></p>
+          <div class="aha">
+            <span>💡</span><p><strong>No finished time.</strong> Present Perfect connects a past experience to life now. Add Past Simple when you give a finished detail: <em>I carved one last year.</em></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section board-section" id="experience" data-step="4">
+      <div class="wrap">
+        <div class="section-heading reveal">
+          <p class="step-kicker">04 · Make it personal</p>
+          <h2>Your Halloween Experience Board</h2>
+          <p>Choose a symbol for each experience. Your sentence will appear automatically.</p>
+        </div>
+        <div class="legend reveal"><span>✅ I’ve done it</span><span>❌ I haven’t done it</span><span>👀 I’d like to do it</span></div>
+        <div class="experience-grid reveal" id="experienceGrid"></div>
+        <div class="board-summary reveal">
+          <div><p class="mini-label">Your experience story</p><h3 id="boardHeadline">Choose a few cards to begin.</h3></div>
+          <button class="button dark small" id="copyStory">Copy my sentences</button>
+          <div class="story-output" id="storyOutput">Your sentences will appear here.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dialogue-section" data-step="5">
+      <div class="wrap dialogue-layout">
+        <div class="dialogue-copy reveal">
+          <p class="step-kicker">05 · Apply in context</p>
+          <h2>Who is the Halloween expert?</h2>
+          <p>Mia and Leo are preparing a party. Complete their conversation with Present Perfect forms.</p>
+          <div class="dialogue-stats"><div><strong>15</strong><span>gaps</span></div><div><strong>3</strong><span>forms</span></div><div><strong>1</strong><span>expert</span></div></div>
+          <img src="assets/party-guests.png" alt="Friends arriving at a Halloween party" />
+        </div>
+        <div class="phone reveal">
+          <div class="phone-top"><span>Party planning</span><span>•••</span></div>
+          <div class="messages" id="dialogueMessages"></div>
+          <button class="button primary full" id="checkDialogue">Check the dialogue</button>
+          <p class="feedback" id="dialogueFeedback" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section repair-section">
+      <div class="wrap">
+        <div class="section-heading light reveal"><p class="step-kicker">Bonus lab · Analyze & repair</p><h2>Catch the grammar gremlins</h2><p>Choose the corrected version of each sentence.</p></div>
+        <div class="repair-grid reveal" id="repairGrid"></div>
+        <div class="center-actions reveal"><button class="button pale" id="checkRepair">Check repairs</button><p class="feedback" id="repairFeedback" aria-live="polite"></p></div>
+      </div>
+    </section>
+
+    <section class="section mission-section" id="mission">
+      <div class="wrap mission-wrap">
+        <div class="mission-header reveal">
+          <div><p class="step-kicker">Final mission · Create</p><h2>Design the best Halloween night</h2></div>
+          <div class="choice-meter"><span id="choiceCount">0 / 5</span><small>activities chosen</small></div>
+        </div>
+        <p class="mission-instruction reveal">Choose exactly five activities. For each one, prepare a Present Perfect question and a reason to include it.</p>
+        <div class="plan-grid reveal" id="planGrid"></div>
+        <div class="mission-result reveal" id="missionResult">
+          <img src="assets/haunted-house.png" alt="A visitor entering a haunted house" />
+          <div>
+            <p class="mini-label">Your speaking plan</p>
+            <h3 id="missionTitle">Pick five activities to unlock your plan.</h3>
+            <ol id="missionList"></ol>
+            <button class="button primary" id="copyPlan" disabled>Copy speaking prompts</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section exit-section">
+      <div class="wrap exit-wrap reveal">
+        <div><p class="step-kicker">Exit check</p><h2>Can you escape the haunted house?</h2><p>Say one answer for every door. Tick it when you have spoken.</p></div>
+        <div class="doors" id="exitDoors"></div>
+        <div class="exit-finish" id="exitFinish"><span>🏚️</span><h3>The door is open!</h3><p>You have completed the Halloween Experience Lab.</p><button class="button primary" id="restartLesson">Restart lesson</button></div>
+      </div>
+    </section>
+
+    <section class="teacher-section">
+      <div class="wrap">
+        <details>
+          <summary><span>Teacher corner</span><small>Open answer key & teaching notes</small></summary>
+          <div class="teacher-content">
+            <div><h3>Verb key</h3><p>carved · worn · dressed up · seen · visited · watched · told · gone · eaten · made</p><h3>Forms</h3><p><strong>have / has</strong> · <strong>haven’t / hasn’t</strong> · <strong>Have / Has</strong></p></div>
+            <div><h3>Dialogue key</h3><p>1 Have / organised · 2 haven’t · 3 have been · 4 Have / carved · 5 have · 6 have / made · 7 Has / decorated · 8 hasn’t · 9 have chosen · 10 hasn’t chosen · 11 Has / dressed · 12 hasn’t · 13 have / chosen · 14 Have / seen · 15 have</p></div>
+            <div><h3>ICQs</h3><p>Do we use a finished time expression in the Present Perfect sentence? <strong>No.</strong><br>Which tense do we use for the finished detail? <strong>Past Simple.</strong></p></div>
+          </div>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap"><span>Halloween Experience Lab</span><a href="#top">Back to top ↑</a></div></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
